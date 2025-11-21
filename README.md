@@ -48,7 +48,7 @@ A comprehensive, development container environment that comes pre-configured wit
 
 ## Getting Started
 
-### Option 1: Build from Source
+### Option 1: Using VS Code
 
 1. Clone this repository:
 
@@ -71,20 +71,60 @@ A comprehensive, development container environment that comes pre-configured wit
 
 6. Start coding! The environment is ready with all tools pre-installed.
 
-### Option 2: Use Pre-built Image
+### Option 2: Using DevContainer CLI
 
-You can use the pre-built multi-architecture image from GitHub Container Registry:
+You can use the DevContainer CLI to build and run the container without VS Code:
 
-1. Update your `.devcontainer/devcontainer.json` to use the pre-built image:
-
-   ```json
-   {
-     "image": "ghcr.io/USERNAME/rover-den:latest"
-     // ... rest of configuration
-   }
+1. Install the DevContainer CLI:
+   ```bash
+   npm install -g @devcontainers/cli
    ```
 
-2. Open in VS Code and reopen in container - it will pull the pre-built image instead of building
+2. Build and open the container:
+   ```bash
+   devcontainer up --workspace-folder .
+   ```
+
+3. Execute commands in the container:
+   ```bash
+   devcontainer exec --workspace-folder . bash
+   ```
+
+4. Stop the container:
+   ```bash
+   docker stop <container-name>
+   ```
+
+### Option 3: Using GitHub Codespaces
+
+Use this devcontainer directly in GitHub Codespaces:
+
+1. **Via GitHub Web UI:**
+   - Go to your repository on GitHub
+   - Click the green "Code" button
+   - Select "Codespaces" tab
+   - Click "Create codespace on main"
+
+2. **Via GitHub CLI:**
+   ```bash
+   # Install GitHub CLI if not already installed
+   # brew install gh  # macOS
+   # sudo apt install gh  # Ubuntu/Debian
+
+   # Create a codespace
+   gh codespace create --repo USERNAME/rover-den
+
+   # List codespaces
+   gh codespace list
+
+   # Connect to codespace in VS Code
+   gh codespace code
+
+   # Or SSH into codespace
+   gh codespace ssh
+   ```
+
+3. The codespace will automatically use the devcontainer configuration and be ready in minutes!
 
 ### Building and Publishing the Image
 
@@ -137,23 +177,6 @@ Add extension IDs to the `customizations.vscode.extensions` array in `.devcontai
 - Docker commands work inside the container (Docker-in-Docker)
 - Git credentials are automatically forwarded from your host machine
 - Extensions and settings are preserved across container rebuilds
-
-## Troubleshooting
-
-### Container fails to build
-
-- Ensure Docker Desktop is running
-- Try "Dev Containers: Rebuild Container" from the command palette
-
-### Extensions not loading
-
-- Reopen the container or reload the VS Code window
-- Check that the Dev Containers extension is installed and up to date
-
-### Slow performance
-
-- Allocate more resources to Docker Desktop in settings
-- Consider using a .dockerignore file for large projects
 
 ## License
 
