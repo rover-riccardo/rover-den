@@ -1,11 +1,11 @@
 {
   "name": "Rover Den",
   // Use pre-built image from GHCR (faster startup)
-  // "image": "ghcr.io/rover-riccardo/rover-den:latest",
+  "image": "ghcr.io/rover-riccardo/rover-den:latest",
   // Or build from source (uncomment the lines below and comment out "image" above)
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
+  // "build": {
+  // "dockerfile": "Dockerfile"
+  // },
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {
       "version": "latest",
