@@ -1,0 +1,53 @@
+{
+  "name": "Rover Den",
+  // Use pre-built image from GHCR (faster startup)
+  // "image": "ghcr.io/rover-riccardo/rover-den:latest",
+  // Or build from source (uncomment the lines below and comment out "image" above)
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "latest",
+      "dockerDashComposeVersion": "v2"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.debugpy",
+        "charliermarsh.ruff",
+        "golang.go",
+        "vscjava.vscode-java-pack",
+        "rust-lang.rust-analyzer",
+        "ms-azuretools.vscode-docker",
+        "eamodio.gitlens"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "[python]": {
+          "editor.defaultFormatter": "charliermarsh.ruff",
+          "editor.formatOnSave": true,
+          "editor.codeActionsOnSave": {
+            "source.fixAll.ruff": "explicit",
+            "source.organizeImports.ruff": "explicit"
+          }
+        },
+        "github.copilot.enable": {
+          "*": false
+        },
+        "editor.inlineSuggest.enabled": false,
+        "editor.suggest.showInlineCompletions": false
+      }
+    }
+  },
+  "forwardPorts": [3000, 5000, 8000, 8080],
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+  "remoteUser": "vscode"
+}
