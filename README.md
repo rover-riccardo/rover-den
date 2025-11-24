@@ -24,31 +24,11 @@ A comprehensive, development container environment that comes pre-configured wit
 - **Build Tools** - CMake, GCC, and other essential compilation tools
 - **Utilities** - curl, wget, vim, nano, htop, tree, and more
 
-### Pre-installed Packages
 
-#### Python
-
-- uv (fast Python package installer and resolver)
-- requests, pytest, ruff, mypy
-- ipython, jupyter, numpy, pandas
-
-#### Node.js
-
-- typescript, ts-node, nodemon
-- eslint, prettier, jest
-
-#### Go
-
-- gopls (language server)
-- golangci-lint
-
-#### Rust
-
-- rustfmt, clippy
 
 ## Getting Started
 
-### Option 1: Using VS Code
+### Using VS Code
 
 1. Clone this repository:
 
@@ -71,7 +51,7 @@ A comprehensive, development container environment that comes pre-configured wit
 
 6. Start coding! The environment is ready with all tools pre-installed.
 
-### Option 2: Using DevContainer CLI
+### Using DevContainer CLI
 
 You can use the DevContainer CLI to build and run the container without VS Code:
 
@@ -95,7 +75,7 @@ You can use the DevContainer CLI to build and run the container without VS Code:
    docker stop <container-name>
    ```
 
-### Option 3: Using GitHub Codespaces
+### Using GitHub Codespaces
 
 Use this devcontainer directly in GitHub Codespaces:
 
@@ -126,7 +106,38 @@ Use this devcontainer directly in GitHub Codespaces:
 
 3. The codespace will automatically use the devcontainer configuration and be ready in minutes!
 
-### Building and Publishing the Image
+### Port Forwarding
+
+The following ports are automatically forwarded:
+
+- 3000 - Common for Node.js apps (e.g., React, Express)
+- 5000 - Common for Python apps (e.g., Flask)
+- 8000 - Common for Python apps (e.g., Django)
+- 8080 - Common for various web servers
+
+### Pre-installed Packages
+
+#### Python
+
+- uv (fast Python package installer and resolver)
+- requests, pytest, ruff, mypy
+- ipython, jupyter, numpy, pandas
+
+#### Node.js
+
+- typescript, ts-node, nodemon
+- eslint, prettier, jest
+
+#### Go
+
+- gopls (language server)
+- golangci-lint
+
+#### Rust
+
+- rustfmt, clippy
+
+### Development of the container / Building and Publishing the Image
 
 The repository includes a GitHub Actions workflow that automatically builds and publishes the devcontainer image to GHCR.
 
@@ -146,15 +157,6 @@ The repository includes a GitHub Actions workflow that automatically builds and 
    - Enter version tag (e.g., `v1.0.0`)
 
 The workflow will build for both `amd64` and `arm64` architectures and push to `ghcr.io/USERNAME/REPO:VERSION` and `ghcr.io/USERNAME/REPO:latest`.
-
-### Port Forwarding
-
-The following ports are automatically forwarded:
-
-- 3000 - Common for Node.js apps (e.g., React, Express)
-- 5000 - Common for Python apps (e.g., Flask)
-- 8000 - Common for Python apps (e.g., Django)
-- 8080 - Common for various web servers
 
 ## Customization
 
